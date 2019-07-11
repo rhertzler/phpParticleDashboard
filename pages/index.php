@@ -4,6 +4,10 @@
 ini_set('display_errors',1);
 ini_set('display_startup_errors',1);
 error_reporting(-1);
+
+* - update the list to display nicer, control wrapping
+* - change data in list to remove no longer supported items, replace with current items
+
 */
 
 if((@include 'phpParticle.class.php') === false)  die("Unable to load phpParticle class");
@@ -48,13 +52,13 @@ if($particle->listDevices() == true)
       Last Ip
     </th>
     <th>
-      Last Handshake
+      Product ID
     </th>
     <th>
-      Firmware Product Id
+      System FW
     </th>
     <th>
-      Firmware Version
+      Last Heard
     </th>
     <th>
       Quarantined
@@ -78,20 +82,20 @@ if($particle->listDevices() == true)
         <td>
           <?php echo $device['id']; ?>
         </td>
-        <td>
+        <td nowrap>
           <?php echo $device['name']; ?>
         </td>
         <td>
           <?php echo $device['last_ip_address']; ?>
         </td>
         <td>
-          <?php echo $device['last_handshake_at']; ?>
+          <?php echo $device['product_id']; ?>
         </td>
         <td>
-          <?php echo $device['firmware_product_id']; ?>
+          <?php echo $device['system_firmware_version']; ?>
         </td>
         <td>
-          <?php echo $device['firmware_version']; ?>
+          <?php echo $device['last_heard']; ?>
         </td>
         <td>
           <?php echo $device['quarantined'] ? $device['quarantined'] : "no"; ?>
@@ -107,7 +111,7 @@ if($particle->listDevices() == true)
               echo "<span class=\"glyphicon glyphicon-eye-close\" aria-hidden=\"true\"></span> (NO)";
           ?>
         </td>
-        <td>
+        <td nowrap>
           <?php
             if($device['connected'] || $device['online'])
             {
@@ -129,7 +133,7 @@ if($particle->listDevices() == true)
 <?php
     }
     ?>
-    <tr>
+  <tr>
     <th>
       ID
     </th>
@@ -140,13 +144,13 @@ if($particle->listDevices() == true)
       Last Ip
     </th>
     <th>
-      Last Handshake
+      Product ID
     </th>
     <th>
-      Firmware Product Id
+      System FW
     </th>
     <th>
-      Firmware Version
+      Last Heard
     </th>
     <th>
       Quarantined
